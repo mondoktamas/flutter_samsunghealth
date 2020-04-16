@@ -1,6 +1,6 @@
 name: samsunghealth
 description: A new Flutter plugin.
-version: 0.0.1
+version: 0.0.2
 author:
 homepage: https://github.com/mondoktamas/flutter_samsunghealth.git
 
@@ -17,15 +17,15 @@ dev_dependencies:
     sdk: flutter
 
 
-flutter:
-  plugin:
-    platforms:
-      android:
-        androidPackage: com.flutter.samsunghealth
-        pluginClass: SamsunghealthPlugin
-
-
 #flutter:
 #  plugin:
-#    androidPackage: com.flutter.samsunghealth
-#    pluginClass: SamsunghealthPlugin
+#    platforms:
+#      android:
+#        androidPackage: com.flutter.samsunghealth
+#        pluginClass: SamsunghealthPlugin
+
+
+flutter:
+  plugin:
+    androidPackage: com.flutter.samsunghealth
+    pluginClass: SamsunghealthPlugin

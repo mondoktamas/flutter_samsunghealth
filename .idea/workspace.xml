@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="" />
+    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="sdk jar file removed from flutter lib folder">
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +20,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aX8WQ9Rte2Ei5LXK9ETPkAKZ1Z" />
   <component name="PropertiesComponent">
@@ -52,7 +59,48 @@
       <option name="presentableId" value="Default" />
       <updated>1586870608463</updated>
     </task>
+    <task id="LOCAL-00001" summary="SamsunghealthPlugin updated to support the old plugin way">
+      <created>1587020929470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587020929470</updated>
+    </task>
+    <task id="LOCAL-00002" summary="sdk jar file removed from flutter lib folder">
+      <created>1587021015716</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587021015716</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Channel name fixed in dart plugin file&#10;gradle and yaml file updated">
+      <created>1587021503632</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587021503632</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SamsunghealthPlugin updated to support the old plugin way" />
+    <MESSAGE value="sdk jar file removed from flutter lib folder" />
+    <MESSAGE value="Channel name fixed in dart plugin file&#10;gradle and yaml file updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Channel name fixed in dart plugin file&#10;gradle and yaml file updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -82,39 +130,34 @@
           <line>33</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/samsunghealth.dart</url>
-          <line>33</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>24</line>
+          <line>31</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>32</line>
+          <line>39</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>37</line>
+          <line>44</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>41</line>
+          <line>48</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>48</line>
+          <line>55</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/android/src/main/java/com/flutter/samsunghealth/SamsunghealthPlugin.java</url>
-          <line>20</line>
+          <line>27</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
