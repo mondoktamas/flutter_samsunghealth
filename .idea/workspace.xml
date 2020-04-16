@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587022189421</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Read method change to return double instead of num">
+      <created>1587023469088</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587023469088</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,7 +122,8 @@
     <MESSAGE value="Channel name fixed in dart plugin file&#10;gradle and yaml file updated" />
     <MESSAGE value="Version updated" />
     <MESSAGE value="Flutter upgraded" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flutter upgraded" />
+    <MESSAGE value="Read method change to return double instead of num" />
+    <option name="LAST_COMMIT_MESSAGE" value="Read method change to return double instead of num" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
