@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -18,16 +16,10 @@ import com.samsung.android.sdk.healthdata.HealthDataStore;
 import com.samsung.android.sdk.healthdata.HealthPermissionManager;
 import com.samsung.android.sdk.healthdata.HealthResultHolder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.flutter.plugin.common.MethodCall;
@@ -42,26 +34,6 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
     private AtomicBoolean isConnected = new AtomicBoolean(false);
 
     private HealthDataStore healthDataStore;
-    private final HealthDataStore.ConnectionListener connectionListener = new HealthDataStore.ConnectionListener() {
-        @Override
-        public void onConnected() {
-            isConnected.set(true);
-        }
-
-        @Override
-        public void onConnectionFailed(final HealthConnectionErrorResult healthConnectionErrorResult) {
-            isConnected.set(false);
-            showConnectionFailureDialog(healthConnectionErrorResult);
-        }
-
-        @Override
-        public void onDisconnected() {
-            isConnected.set(false);
-            if (!activity.isFinishing()) {
-                healthDataStore.disconnectService();
-            }
-        }
-    };
 
     private void showConnectionFailureDialog(final HealthConnectionErrorResult error) {
         if (activity == null || activity.isFinishing()) return;
@@ -99,21 +71,6 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
             alert.setNegativeButton(android.R.string.cancel, null);
         }
         alert.show();
-    }
-
-    SamsungHealthModule(final Context context) {
-        connect(context);
-    }
-
-    private void connect(final Context context) {
-        final HealthDataService healthDataService = new HealthDataService();
-        try {
-            healthDataService.initialize(context);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        healthDataStore = new HealthDataStore(context, connectionListener);
-        healthDataStore.connectService();
     }
 
     private void readSteps(@NonNull final ReadRequest readRequest, @NonNull final MethodChannel.Result result) {
@@ -154,29 +111,79 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
     }
 
     @Override
-    public final void onMethodCall(@NonNull MethodCall call, @NonNull final MethodChannel.Result result) {
+    public final void onMethodCall(@NonNull final MethodCall call, @NonNull final MethodChannel.Result result) {
         if (!isConnected.get()) {
             result.error("CONNECTION_ERROR", "Cannot connect to SamsungHealth service", null);
             return;
         }
         switch (call.method) {
             case "hasPermissions": {
-                final PermissionRequest permissionRequest = PermissionRequest.fromCall(call);
-                hasPermissions(permissionRequest, result);
+                connectAndExecute(new Runnable() {
+                    @Override
+                    public void run() {
+                        final PermissionRequest permissionRequest = PermissionRequest.fromCall(call);
+                        hasPermissions(permissionRequest, result);
+                    }
+                });
                 break;
             }
             case "requestPermissions": {
-                final PermissionRequest permissionRequest = PermissionRequest.fromCall(call);
-                requestPermissions(permissionRequest, result);
+                connectAndExecute(new Runnable() {
+                    @Override
+                    public void run() {
+                        final PermissionRequest permissionRequest = PermissionRequest.fromCall(call);
+                        requestPermissions(permissionRequest, result);
+                    }
+                });
                 break;
             }
             case "read":
-                final ReadRequest readRequest = ReadRequest.fromCall(call);
-                readSteps(readRequest, result);
+                connectAndExecute(new Runnable() {
+                    @Override
+                    public void run() {
+                        final ReadRequest readRequest = ReadRequest.fromCall(call);
+                        readSteps(readRequest, result);
+                    }
+                });
                 break;
             default:
                 result.notImplemented();
                 break;
+        }
+    }
+
+    private void connectAndExecute(final Runnable task) {
+        if (isConnected.get()) {
+            task.run();
+        } else {
+            final HealthDataService healthDataService = new HealthDataService();
+            try {
+                healthDataService.initialize(activity.getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            healthDataStore = new HealthDataStore(activity.getApplicationContext(), new HealthDataStore.ConnectionListener() {
+                @Override
+                public final void onConnected() {
+                    isConnected.set(true);
+                    if (activity != null) task.run();
+                }
+
+                @Override
+                public final void onConnectionFailed(final HealthConnectionErrorResult healthConnectionErrorResult) {
+                    isConnected.set(false);
+                    showConnectionFailureDialog(healthConnectionErrorResult);
+                }
+
+                @Override
+                public final void onDisconnected() {
+                    isConnected.set(false);
+                    if (activity != null && !activity.isFinishing()) {
+                        healthDataStore.disconnectService();
+                    }
+                }
+            });
+            healthDataStore.connectService();
         }
     }
 

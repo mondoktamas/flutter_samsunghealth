@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587023469088</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Gradle issue fixed">
+      <created>1587023811190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587023811190</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,7 +127,8 @@
     <MESSAGE value="Version updated" />
     <MESSAGE value="Flutter upgraded" />
     <MESSAGE value="Read method change to return double instead of num" />
-    <option name="LAST_COMMIT_MESSAGE" value="Read method change to return double instead of num" />
+    <MESSAGE value="Gradle issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gradle issue fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

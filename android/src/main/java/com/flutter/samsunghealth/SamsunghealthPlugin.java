@@ -23,13 +23,13 @@ public final class SamsunghealthPlugin implements FlutterPlugin, ActivityAware {
 
     public static void registerWith(final Registrar registrar) {
         final SamsunghealthPlugin plugin = new SamsunghealthPlugin();
-        plugin.setUpChannel(registrar.context(), registrar.messenger());
+        plugin.setUpChannel(registrar.messenger());
         plugin.attachToActivity(registrar.activity());
     }
 
     @Override
     public final void onAttachedToEngine(@NonNull final FlutterPluginBinding flutterPluginBinding) {
-        setUpChannel(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
+        setUpChannel(flutterPluginBinding.getBinaryMessenger());
     }
 
     @Override
@@ -61,8 +61,8 @@ public final class SamsunghealthPlugin implements FlutterPlugin, ActivityAware {
         samsungHealthModule.onDetachedFromActivity();
     }
 
-    private void setUpChannel(final Context context, final BinaryMessenger messenger) {
-        samsungHealthModule = new SamsungHealthModule(context);
+    private void setUpChannel(final BinaryMessenger messenger) {
+        samsungHealthModule = new SamsungHealthModule();
         methodChannel = new MethodChannel(messenger, CHANNEL);
         methodChannel.setMethodCallHandler(samsungHealthModule);
     }
