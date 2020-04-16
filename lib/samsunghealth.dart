@@ -18,7 +18,7 @@ class Samsunghealth {
     });
   }
 
-  static Future<num> read(
+  static Future<double> read(
       DataType type, {
         DateTime dateFrom,
         DateTime dateTo,

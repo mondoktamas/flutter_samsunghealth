@@ -16,15 +16,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-#flutter:
-#  plugin:
-#    platforms:
-#      android:
-#        androidPackage: com.flutter.samsunghealth
-#        pluginClass: SamsunghealthPlugin
-
-
 flutter:
   plugin:
     androidPackage: com.flutter.samsunghealth
