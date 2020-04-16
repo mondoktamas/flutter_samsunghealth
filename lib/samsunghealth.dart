@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 class Samsunghealth {
   static const MethodChannel _channel =
-      const MethodChannel('samsunghealth');
+      const MethodChannel('plugins.flutter.io/samsunghealth');
 
   static Future<bool> hasPermissions(List<DataType> types) async {
     return await _channel.invokeMethod('hasPermissions', {
@@ -28,11 +28,6 @@ class Samsunghealth {
       "date_from": dateFrom?.millisecondsSinceEpoch ?? 1,
       "date_to": (dateTo ?? DateTime.now()).millisecondsSinceEpoch,
     });
-  }
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
   }
 
   static String _dataTypeToString(DataType type) {
