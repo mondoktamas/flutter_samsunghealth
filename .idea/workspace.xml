@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="sdk jar file removed from flutter lib folder">
-      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
-    </list>
+    <list default="true" id="45c816c8-6d64-4d34-a753-f588130d4485" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587021503632</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Version updated">
+      <created>1587021841498</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587021841498</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -100,7 +103,8 @@
     <MESSAGE value="SamsunghealthPlugin updated to support the old plugin way" />
     <MESSAGE value="sdk jar file removed from flutter lib folder" />
     <MESSAGE value="Channel name fixed in dart plugin file&#10;gradle and yaml file updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Channel name fixed in dart plugin file&#10;gradle and yaml file updated" />
+    <MESSAGE value="Version updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
