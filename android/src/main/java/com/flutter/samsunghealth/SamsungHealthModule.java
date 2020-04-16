@@ -2,7 +2,6 @@ package com.flutter.samsunghealth;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 
 import androidx.annotation.NonNull;
@@ -112,10 +111,6 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
 
     @Override
     public final void onMethodCall(@NonNull final MethodCall call, @NonNull final MethodChannel.Result result) {
-        if (!isConnected.get()) {
-            result.error("CONNECTION_ERROR", "Cannot connect to SamsungHealth service", null);
-            return;
-        }
         switch (call.method) {
             case "hasPermissions": {
                 connectAndExecute(new Runnable() {
@@ -156,35 +151,48 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
         if (isConnected.get()) {
             task.run();
         } else {
-            final HealthDataService healthDataService = new HealthDataService();
-            try {
-                healthDataService.initialize(activity.getApplicationContext());
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (healthDataStore != null) {
+                healthDataStore.disconnectService();
+                connectToService(task);
+            } else {
+                initService();
+                connectToService(task);
             }
-            healthDataStore = new HealthDataStore(activity.getApplicationContext(), new HealthDataStore.ConnectionListener() {
-                @Override
-                public final void onConnected() {
-                    isConnected.set(true);
-                    if (activity != null) task.run();
-                }
-
-                @Override
-                public final void onConnectionFailed(final HealthConnectionErrorResult healthConnectionErrorResult) {
-                    isConnected.set(false);
-                    showConnectionFailureDialog(healthConnectionErrorResult);
-                }
-
-                @Override
-                public final void onDisconnected() {
-                    isConnected.set(false);
-                    if (activity != null && !activity.isFinishing()) {
-                        healthDataStore.disconnectService();
-                    }
-                }
-            });
-            healthDataStore.connectService();
         }
+    }
+
+    private void initService() {
+        final HealthDataService healthDataService = new HealthDataService();
+        try {
+            healthDataService.initialize(activity.getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void connectToService(final Runnable task) {
+        healthDataStore = new HealthDataStore(activity.getApplicationContext(), new HealthDataStore.ConnectionListener() {
+            @Override
+            public final void onConnected() {
+                isConnected.set(true);
+                if (activity != null) task.run();
+            }
+
+            @Override
+            public final void onConnectionFailed(final HealthConnectionErrorResult healthConnectionErrorResult) {
+                isConnected.set(false);
+                showConnectionFailureDialog(healthConnectionErrorResult);
+            }
+
+            @Override
+            public final void onDisconnected() {
+                isConnected.set(false);
+                if (activity != null && !activity.isFinishing()) {
+                    healthDataStore.disconnectService();
+                }
+            }
+        });
+        healthDataStore.connectService();
     }
 
     private void hasPermissions(final PermissionRequest permissionRequest, final MethodChannel.Result result) {
