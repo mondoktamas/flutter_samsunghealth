@@ -240,6 +240,6 @@ public final class SamsungHealthModule implements MethodChannel.MethodCallHandle
     }
 
     final void release() {
-        healthDataStore.disconnectService();
+        if (healthDataStore != null) healthDataStore.disconnectService();
     }
 }
